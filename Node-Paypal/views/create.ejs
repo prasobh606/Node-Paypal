@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title></title>
+	<% include templates/linker.ejs %>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+  	<% include templates/header.ejs %>
+    <h1></h1>
+    <p>Welcome to paypal</p>
+	<p>Payment Completed</p>
+	
+	<div class="container">
+		<div class="row">
+			<div class="col-md-6">
+				<div class="col-md-12">
+					<div class="col-md-6 label label-default">ID : </div>
+					<div class="col-md-6 label label-default"><%= response.id %></div>
+			
+				</div>
+				<div class="col-md-12">
+					<div class="col-md-6 label label-default">Created Time: </div>
+					<div class="col-md-6 label label-default"><%= response.create_time%></div>
+			
+				</div>
+				<div class="col-md-12">
+					<div class="col-md-6 label label-default">Updated Time : </div>
+					<div class="col-md-6 label label-default"><%= response.update_time%></div>
+			
+				</div>
+				<div class="col-md-12">
+					<div class="col-md-6 label label-default">state : </div>
+					<div class="col-md-6 label label-default"><%= response.state%></div>
+			
+				</div>
+				<div class="col-md-12">
+					<div class="col-md-6 label label-default">intent : </div>
+					<div class="col-md-6 label label-default"><%= response.intent%></div>
+			
+				</div>
+			</div>
+		</div>
+		<div class="row">Payer Details</div>
+		<div class="row">
+			<div class="col-md-6">
+				<div class="col-md-12">
+					<div class="col-md-6 label label-default">payment_method : </div>
+					<div class="col-md-6 label label-default"><%= response.payer.payment_method %></div>
+			
+				</div>
+				<%response.payer.funding_instruments.forEach(function(item){%>
+					<div class="col-md-12">
+						
+						<div class="col-md-6 label label-default">Card Type: </div>
+						<div class="col-md-6 label label-default"><%=item.credit_card.type%></div>
+						
+				
+					</div>
+					<div class="col-md-12">
+						<div class="col-md-6 label label-default">Number : </div>
+						<div class="col-md-6 label label-default"><%= item.credit_card.number%></div>
+				
+					</div>
+					<div class="col-md-12">
+						<div class="col-md-6 label label-default">FirstName : </div>
+						<div class="col-md-6 label label-default"><%=item.credit_card.first_name%></div>
+				
+					</div>
+					<div class="col-md-12">
+						<div class="col-md-6 label label-default">LastName : </div>
+						<div class="col-md-6 label label-default"><%=item.credit_card.last_name%></div>
+				
+					</div>
+					<div class="col-md-12">
+						<div class="col-md-6">Billing Address ('static') </div>
+						
+					</div>
+					<div class="col-md-12">
+						<div class="col-md-6 label label-default">City : </div>
+						<div class="col-md-6 label label-default"><%=item.credit_card.billing_address.city%></div>
+				
+					</div>
+					<div class="col-md-12">
+						<div class="col-md-6 label label-default">Country : </div>
+						<div class="col-md-6 label label-default"><%=item.credit_card.billing_address.country_code%></div>
+				
+					</div>
+					<div class="col-md-12">
+						<div class="col-md-6 label label-default">Line : </div>
+						<div class="col-md-6 label label-default"><%=item.credit_card.billing_address.line1%></div>
+				
+					</div>
+					<div class="col-md-12">
+						<div class="col-md-6 label label-default">State : </div>
+						<div class="col-md-6 label label-default"><%=item.credit_card.billing_address.state%></div>
+				
+					</div>
+				<%})%>
+			</div>
+		</div>
+		<div class="row">Transaction Details</div>
+		<div class="row">
+			<div class="col-md-6">
+				<%response.transactions.forEach(function(item){%>
+					<div class="col-md-12">
+						<div class="col-md-6 label label-default">amount : </div>
+						<div class="col-md-6 label label-default"><%= item.amount.total %></div>
+				
+					</div>
+					<div class="col-md-12">
+						<div class="col-md-6 label label-default">Currency: </div>
+						<div class="col-md-6 label label-default"><%= item.amount.currency%></div>
+				
+					</div>
+					<div class="col-md-12">
+						<div class="col-md-6 label label-default">Description : </div>
+						<div class="col-md-6 label label-default"><%= item.description%></div>
+				
+					</div>
+					
+				<%})%>	
+			</div>
+		</div>
+	</div>
+    
+  </body>
+</html>

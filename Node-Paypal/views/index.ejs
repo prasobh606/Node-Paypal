@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+	<% include templates/linker.ejs %>
+    <script src="js/main.js"></script>
+  </head>
+  <body>
+  	<% include templates/header.ejs %>
+    <h1><%= title %></h1>
+    <p>Welcome to <%= title %></p>
+	<div class="container">
+		<div class="row">
+			<div class="col-md-6">
+				<form action="/create" method="post" >
+					<div class="form-group">
+						<label for="inputAmount">Amount</label>
+						<input type="number" class="form-control" id="inputAmount" placeholder="Amount" name="inputAmount" value="120">
+					</div>
+					<div class="form-group">
+						<label for="currency">Currency</label>
+						<input type="text" id="currency" class="form-control" maxlength="3" placeholder="USD" name="currency" value="USD">
+					</div>
+					<div class="form-group">
+						<label for="description">Description</label>
+						<input type="text" id="description" class="form-control"  placeholder="optional" name="description" value="Testing the payment with sandbox">
+					</div>
+					<div class="form-group">
+						<label for="firstName">First Name</label>
+						<input type="text" id="firstName" class="form-control" placeholder="First Name" name="firstName" Value="TEST">
+					</div>
+					<div class="form-group">
+						<label for="lastName">Last Name</label>
+						<input type="text" id="lastName" class="form-control" placeholder="Last Name" name="lastName" Value="TEST2">
+					</div>
+					<div class="form-group">
+						<label for="cardNumber">Card Number</label>
+						<input type="number" id="cardNumber" class="form-control" placeholder="Card Number" name="cardNumber" value="376305416562543">
+					</div>
+					<div class="form-group">
+						<label for="type">Type</label>
+						<input type="text" id="type" class="form-control" placeholder="Card Type" name="type" value="Amex">
+					</div>
+					<div class="form-group">
+						<label for="expireMonth">Expire Month</label>
+						<input type="text" id="expireMonth" maxlength="2" class="form-control" placeholder="Expire Month" name="expireMonth" value="07">
+					</div>
+					<div class="form-group">
+						<label for="expireYear">Expire Year</label>
+						<input type="text" id="expireYear" class="form-control" placeholder="Expire Year" name="expireYear" value="2020">
+					</div>
+					<div class="form-group">
+						<label for="cvv">CVV</label>
+						<input type="password" id="cvv" class="form-control" placeholder="CVV" name="cvv" value="123">
+					</div>
+					
+					<button type="submit" class="btn btn-primary">Make Payment</button>
+				</form>
+			</div>
+		</div>
+	</div>
+  </body>
+</html>
